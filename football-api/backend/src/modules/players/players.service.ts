@@ -12,4 +12,26 @@ export class PlayersService {
   getPlayerById(id: number): Promise<Player | undefined> {
     return this.playerRepository.findOneById(id);
   }
+
+  getPlayers(filters: {
+    name?: string;
+    club?: string;
+    position?: string;
+    page?: number;
+    limit?: number;
+  }): Promise<{ data: Player[]; total: number }> {
+    return this.playerRepository.findWithFilters({
+      ...filters,
+      page: filters.page || 1,
+      limit: filters.limit || 10,
+    });
+  }
+
+  createPlayer(data: Partial<Player>): Promise<Player> {
+    return this.playerRepository.create(data);
+  }
+
+  updatePlayer(id: number, data: Partial<Player>): Promise<Player | undefined> {
+    return this.playerRepository.update(id, data);
+  }
 }

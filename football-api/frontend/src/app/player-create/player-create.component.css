@@ -1,0 +1,71 @@
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.btn-back {
+  background: #0f3460;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
+.card {
+  background: white;
+  border-radius: 16px;
+  padding: 30px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+
+h1 { color: #1a1a2e; margin-bottom: 24px; }
+h2 { color: #0f3460; margin: 24px 0 16px; }
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+}
+
+.campo { display: flex; flex-direction: column; gap: 6px; }
+
+label { font-size: 13px; font-weight: 600; color: #555; }
+
+input {
+  padding: 10px;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  font-size: 15px;
+}
+
+input:focus { outline: none; border-color: #0f3460; }
+
+.btn-guardar {
+  margin-top: 24px;
+  width: 100%;
+  padding: 14px;
+  background: #0f3460;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn-guardar:disabled { opacity: 0.6; cursor: not-allowed; }
+.btn-guardar:hover:not(:disabled) { background: #e94560; }
+
+.exito {
+  background: #d4edda;
+  color: #155724;
+  padding: 12px;
+  border-radius: 8px;
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+.cargando { text-align: center; padding: 60px; color: #888; }

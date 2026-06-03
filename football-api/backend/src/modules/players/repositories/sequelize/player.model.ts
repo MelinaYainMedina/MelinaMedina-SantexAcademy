@@ -80,22 +80,22 @@ export class PlayerModel extends Model<PlayerModel> {
   bodyType?: string;
 
   @Column({ type: DataType.INTEGER, allowNull: true })
-  pace?: number;
+  declare pace?: number;
 
   @Column({ type: DataType.INTEGER, allowNull: true })
-  shooting?: number;
+  declare shooting?: number;
 
   @Column({ type: DataType.INTEGER, allowNull: true })
-  passing?: number;
+  declare passing?: number;
 
   @Column({ type: DataType.INTEGER, allowNull: true })
-  dribbling?: number;
+  declare dribbling?: number;
 
   @Column({ type: DataType.INTEGER, allowNull: true })
-  defending?: number;
+  declare defending?: number;
 
   @Column({ type: DataType.INTEGER, allowNull: true })
-  physic?: number;
+  declare physic?: number;
 
   @Column({
     field: 'attacking_crossing',

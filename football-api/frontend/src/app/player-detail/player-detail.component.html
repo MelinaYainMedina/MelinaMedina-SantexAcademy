@@ -1,0 +1,58 @@
+<div class="container">
+  <button class="btn-back" (click)="volver()">← Volver</button>
+
+<button class="btn-edit" (click)="editar()">✏️ Editar</button>
+
+
+
+  <div *ngIf="cargando" class="cargando">Cargando jugador...</div>
+
+  <div *ngIf="!cargando && player" class="detail-card">
+    <div class="player-header">
+      <div class="rating-badge">{{ player.rating }}</div>
+      <div>
+        <h1>{{ player.name }}</h1>
+        <p class="subtitle">{{ player.position }} · {{ player.club }} · {{ player.nationality }}</p>
+      </div>
+    </div>
+
+    <div class="content">
+      <div class="stats">
+        <h2>Estadísticas</h2>
+        <div class="stat-row">
+          <span>Velocidad</span>
+          <div class="bar-container">
+            <div class="bar" [style.width.%]="player.speed"></div>
+          </div>
+          <span class="val">{{ player.speed }}</span>
+        </div>
+        <div class="stat-row">
+          <span>Disparo</span>
+          <div class="bar-container">
+            <div class="bar" [style.width.%]="player.shooting"></div>
+          </div>
+          <span class="val">{{ player.shooting }}</span>
+        </div>
+        <div class="stat-row">
+          <span>Pase</span>
+          <div class="bar-container">
+            <div class="bar" [style.width.%]="player.passing"></div>
+          </div>
+          <span class="val">{{ player.passing }}</span>
+        </div>
+        <div class="stat-row">
+          <span>Dribbling</span>
+          <div class="bar-container">
+            <div class="bar" [style.width.%]="player.dribbling"></div>
+          </div>
+          <span class="val">{{ player.dribbling }}</span>
+        </div>
+      </div>
+
+      <div class="radar">
+        <h2>Gráfico de habilidades</h2>
+        <canvas id="radarChart"></canvas>
+      </div>
+    </div>
+  </div>
+</div>

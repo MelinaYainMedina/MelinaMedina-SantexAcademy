@@ -1,13 +1,13 @@
-import { Component, signal } from '@angular/core';
+import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { PlayerComponent } from './components/player/player';
 
 @Component({
   selector: 'app-root',
+  standalone: true,
+  imports: [RouterOutlet],
   templateUrl: './app.html',
-  imports: [PlayerComponent],
-  styleUrl: './app.css',
+  styleUrl: './app.css'
 })
 export class App {
-  protected readonly title = signal('frontend');
+  protected readonly title = 'frontend';
 }

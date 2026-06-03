@@ -9,6 +9,8 @@ export class PlayerDto {
   shooting: number;
   dribbling: number;
   passing: number;
+  defending: number;
+  physic: number;
 
   constructor(partial: Partial<PlayerDto>) {
     Object.assign(this, partial);

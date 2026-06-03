@@ -1,0 +1,68 @@
+<div class="container">
+  <button class="btn-back" (click)="volver()">← Volver</button>
+
+  <div *ngIf="cargando" class="cargando">Cargando jugador...</div>
+
+  <div *ngIf="!cargando" class="card">
+    <h1>✏️ Editar jugador</h1>
+
+    <div *ngIf="exito" class="exito">✅ ¡Guardado correctamente! Redirigiendo...</div>
+
+    <form [formGroup]="form" (ngSubmit)="guardar()">
+      <div class="grid">
+        <div class="campo">
+          <label>Nombre</label>
+          <input formControlName="name" type="text" />
+        </div>
+        <div class="campo">
+          <label>Posición</label>
+          <input formControlName="position" type="text" />
+        </div>
+        <div class="campo">
+          <label>Club</label>
+          <input formControlName="club" type="text" />
+        </div>
+        <div class="campo">
+          <label>Nacionalidad</label>
+          <input formControlName="nationality" type="text" />
+        </div>
+        <div class="campo">
+          <label>Rating (1-99)</label>
+          <input formControlName="rating" type="number" min="1" max="99" />
+        </div>
+      </div>
+
+      <h2>Habilidades</h2>
+      <div class="grid">
+        <div class="campo">
+          <label>Velocidad</label>
+          <input formControlName="speed" type="number" min="0" max="99" />
+        </div>
+        <div class="campo">
+          <label>Disparo</label>
+          <input formControlName="shooting" type="number" min="0" max="99" />
+        </div>
+        <div class="campo">
+          <label>Pase</label>
+          <input formControlName="passing" type="number" min="0" max="99" />
+        </div>
+        <div class="campo">
+          <label>Dribbling</label>
+          <input formControlName="dribbling" type="number" min="0" max="99" />
+        </div>
+        <div class="campo">
+          <label>Defensa</label>
+          <input formControlName="defending" type="number" min="0" max="99" />
+        </div>
+        <div class="campo">
+          <label>Físico</label>
+          <input formControlName="physic" type="number" min="0" max="99" />
+        </div>
+      </div>
+
+      <button type="submit" class="btn-guardar" [disabled]="form.invalid || guardando">
+        {{ guardando ? 'Guardando...' : 'Guardar cambios' }}
+      </button>
+    </form>
+  </div>
+</div>

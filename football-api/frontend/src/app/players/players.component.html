@@ -1,0 +1,60 @@
+<div class="container">
+  <div class="header">
+    <h1>⚽ Jugadores FIFA</h1>
+    <button class="btn-logout" (click)="logout()">Cerrar sesión</button>
+  </div>
+
+  <div class="filtros">
+    <input [(ngModel)]="name" placeholder="Buscar por nombre..." />
+    <input [(ngModel)]="club" placeholder="Buscar por club..." />
+    <input [(ngModel)]="position" placeholder="Buscar por posición..." />
+    <button class="btn-primary" (click)="filtrar()">Buscar</button>
+    <button class="btn-csv" (click)="descargarCSV()">⬇ Descargar CSV</button>
+
+    <button class="btn-crear" (click)="router.navigate(['/players/new'])">➕ Crear jugador</button>
+  </div>
+
+  <div *ngIf="cargando" class="cargando">Cargando jugadores...</div>
+
+
+
+  <table *ngIf="!cargando && players.length">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Club</th>
+        <th>Posición</th>
+        <th>Nacionalidad</th>
+        <th>Rating</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let player of players">
+        <td>{{ player.id }}</td>
+        <td>{{ player.name }}</td>
+        <td>{{ player.club }}</td>
+        <td>{{ player.position }}</td>
+        <td>{{ player.nationality }}</td>
+        <td><span class="rating">{{ player.rating }}</span></td>
+        <td>
+          <button class="btn-ver" (click)="verDetalle(player.id)">Ver detalle</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div *ngIf="!cargando && !players.length" class="sin-resultados">
+    No se encontraron jugadores
+  </div>
+
+  <div class="paginacion" *ngIf="total > 0">
+    <button (click)="paginaAnterior()" [disabled]="page === 1">← Anterior</button>
+    <span>Página {{ page }} de {{ totalPaginas }} ({{ total }} jugadores)</span>
+    <button (click)="paginaSiguiente()" [disabled]="page === totalPaginas">Siguiente →</button>
+  </div>
+
+
+
+</div>

@@ -1,0 +1,42 @@
+<div class="login-container">
+  <div class="login-card">
+    <h1>⚽ FIFA Players</h1>
+    <h2>Iniciar sesión</h2>
+
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+
+      <div class="campo">
+        <label>Usuario</label>
+        <input
+          type="text"
+          formControlName="username"
+          placeholder="Ingresá tu usuario"
+        />
+        <span class="error" *ngIf="loginForm.get('username')?.invalid && loginForm.get('username')?.touched">
+          El usuario es requerido
+        </span>
+      </div>
+
+      <div class="campo">
+        <label>Contraseña</label>
+        <input
+          type="password"
+          formControlName="password"
+          placeholder="Ingresá tu contraseña"
+        />
+        <span class="error" *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched">
+          La contraseña es requerida
+        </span>
+      </div>
+
+      <span class="error" *ngIf="errorMessage">{{ errorMessage }}</span>
+
+      <button type="submit" [disabled]="cargando">
+        {{ cargando ? 'Ingresando...' : 'Ingresar' }}
+      </button>
+
+    </form>
+
+    <p class="hint">Usuario: <b>melina</b> / Contraseña: <b>melina123</b></p>
+  </div>
+</div>
