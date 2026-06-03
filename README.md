@@ -1,69 +1,48 @@
-# Santex Academy - FootballAPI
+# FIFA Players Manager — Santex Academy Challenge
 
-## Pasos para correr
+## ¿Cómo correr el proyecto?
 
-1. Instalar Docker Desktop: Si no lo tienen, es el primer paso.
-2. Clonar tu repositorio: 
-   
-   ```bash
-   git clone <URL_DE_TU_REPOSITORIO>
-   ```
-3. Navegar a la carpeta del proyecto:
-    ```bash
-    cd football-api
-   ```
-4. Copiar las variable de entorno del archivo de ejemplo al de ambiente
-    ```bash
-    cp .env.sample .env
-   ```
-5. Levantar todo con: 
-   ```bash
-    docker compose up
-   ```
+1. Clonar el repositorio:
+   git clone https://github.com/MelinaYainMedina/MelinaMedina-SantexAcademy.git
 
-## Alternativa
-Aca las instruciones para correr cada servicio por separado
+2. Entrar a la carpeta:
+   cd MelinaMedina-SantexAcademy/football-api
 
-### Reiniciar los datos
+3. Copiar el archivo de variables de entorno:
+   cp .env.sample .env
 
-``` bash
-docker compose down -v # Esto detiene los contenedores y elimina los volúmenes (incluido db_data)
-docker compose up -d   # Esto vuelve a crear todo desde cero, ejecutando init.sql
-```
+4. Levantar con Docker:
+   docker compose up
 
-### Conectarse a MySQL desde el Terminal / Consola
+5. Abrir en el navegador:
+   - Frontend: http://localhost:4200
+   - Backend: http://localhost:3000
+   - Credenciales: usuario `melina` / contraseña `melina123`
 
-```bash
-mysql -h 127.0.0.1 -P 3306 --user=football_api --password=password football_db
-```
+## Funcionalidades implementadas
 
-```bash
-mysql> SHOW TABLES;
-```
+- Login con JWT
+- Listado de jugadores con paginación y filtros
+- Descarga de CSV
+- Detalle de jugador con gráfico radar de habilidades
+- Editar jugador
+- Crear jugador (Melina Medina — ID 161584)
+- Guard de rutas (protege todas las rutas sin autenticación)
 
-```bash
-mysql> SELECT * FROM users;
-```
+## Decisiones técnicas
 
-```bash
-mysql> exit;
-```
+- Backend: NestJS + Sequelize + MySQL
+- Frontend: Angular 17 standalone components
+- Autenticación: JWT con Passport
+- Gráfico radar: Canvas API nativo (sin librerías externas)
+- Repositorio pattern para desacoplar la lógica de datos
 
-### Inicializar API
+## Endpoints disponibles
 
-```bash
-$ npm install
-```
-
-### Compilar y correr el BackEnd
-
-```bash
-# development
-$ npm run start
-
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
-```
+| Método | Endpoint | Descripción |
+|--------|----------|-------------|
+| POST | /auth/login | Login, devuelve JWT |
+| GET | /api/players | Listado con filtros y paginación |
+| GET | /api/players/:id | Detalle de un jugador |
+| POST | /api/players | Crear jugador |
+| PATCH | /api/players/:id | Editar jugador |
