@@ -7,14 +7,20 @@ import { PlayersService } from './players.service';
 import { PlayerDto } from './dto/player.dto';
 import { JwtAuthGuard } from '../../autenticacion/jwt-auth.guard';
 import { AiService } from '../../ai.service';
+import { UseInterceptors, UploadedFile, BadRequestException } from '@nestjs/common';
+import { FileInterceptor } from '@nestjs/platform-express';
+import { CsvImportService } from './csv-import.service';
 
 @UseGuards(JwtAuthGuard)
 @Controller('api/players')
 export class PlayersController {
+  
+
   constructor(
-    private readonly playersService: PlayersService,
-    private readonly aiService: AiService,
-  ) {}
+  private readonly playersService: PlayersService,
+  private readonly aiService: AiService,
+  private readonly csvImportService: CsvImportService,
+) {}
 
   @Get()
   async getPlayers(
@@ -70,4 +76,15 @@ export class PlayersController {
     if (!updated) throw new NotFoundException(`Player with ID ${id} not found.`);
     return updated;
   }
+
+
+   
+
+@Post('import')
+@UseInterceptors(FileInterceptor('file', { storage: require('multer').memoryStorage() }))
+async importCsv(@UploadedFile() file: Express.Multer.File) {
+  if (!file) throw new BadRequestException('No file uploaded');
+  return this.csvImportService.importFromBuffer(file.buffer);
+}
+
 }
