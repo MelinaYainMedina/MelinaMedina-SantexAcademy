@@ -3,28 +3,35 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
+  background: linear-gradient(135deg, #0a0a1a 0%, #1a1a2e 40%, #0f3460 70%, #1a0a00 100%);
 }
 
 .login-card {
-  background: white;
-  padding: 40px;
-  border-radius: 16px;
+  background: rgba(15, 10, 0, 0.75);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 200, 50, 0.3);
+  padding: 50px 40px;
+  border-radius: 24px;
   width: 100%;
-  max-width: 400px;
-  box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+  max-width: 420px;
+  box-shadow: 0 25px 50px rgba(0,0,0,0.7), 0 0 30px rgba(255,180,0,0.1);
   text-align: center;
 }
 
 h1 {
   font-size: 2rem;
   margin-bottom: 8px;
+  color: #ffd700;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-shadow: 0 0 20px rgba(255,215,0,0.5);
 }
 
 h2 {
-  color: #555;
+  color: rgba(255, 255, 255, 0.7);
   font-weight: 400;
-  margin-bottom: 30px;
+  margin-bottom: 35px;
+  font-size: 1rem;
 }
 
 .campo {
@@ -34,58 +41,69 @@ h2 {
 
 label {
   display: block;
-  font-weight: 600;
-  margin-bottom: 6px;
-  color: #333;
+  color: rgba(255, 215, 0, 0.8);
+  font-size: 14px;
+  margin-bottom: 8px;
+  font-weight: 500;
 }
 
 input {
   width: 100%;
-  padding: 12px;
-  border: 2px solid #ddd;
-  border-radius: 8px;
-  font-size: 16px;
+  padding: 14px 16px;
+  border: 1px solid rgba(255, 200, 50, 0.3);
+  border-radius: 12px;
+  font-size: 15px;
   box-sizing: border-box;
-  transition: border-color 0.3s;
+  transition: all 0.3s;
+  background: rgba(255, 255, 255, 0.07);
+  color: white;
+}
+
+input::placeholder {
+  color: rgba(255, 255, 255, 0.35);
 }
 
 input:focus {
   outline: none;
-  border-color: #0f3460;
+  border-color: #ffd700;
+  background: rgba(255, 215, 0, 0.08);
+  box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.15);
 }
 
 button {
   width: 100%;
-  padding: 14px;
-  background: #0f3460;
-  color: white;
+  padding: 15px;
+  background: linear-gradient(135deg, #c8960c, #ffd700, #c8960c);
+  color: #0a0a1a;
   border: none;
-  border-radius: 8px;
+  border-radius: 12px;
   font-size: 16px;
-  font-weight: 600;
+  font-weight: 700;
   cursor: pointer;
   margin-top: 10px;
-  transition: background 0.3s;
+  transition: all 0.3s;
+  letter-spacing: 1px;
 }
 
 button:hover:not(:disabled) {
-  background: #e94560;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(255, 215, 0, 0.4);
 }
 
 button:disabled {
-  opacity: 0.6;
+  opacity: 0.5;
   cursor: not-allowed;
 }
 
 .error {
-  color: #e94560;
+  color: #ff6b6b;
   font-size: 13px;
   display: block;
   margin-top: 4px;
 }
 
 .hint {
-  margin-top: 20px;
-  color: #888;
+  margin-top: 25px;
+  color: rgba(255, 255, 255, 0.4);
   font-size: 13px;
 }
