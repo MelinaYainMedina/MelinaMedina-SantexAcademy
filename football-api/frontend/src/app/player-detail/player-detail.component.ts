@@ -124,4 +124,10 @@ export class PlayerDetailComponent implements OnInit {
   editar() {
   this.router.navigate(['/players', this.player.id, 'edit']);
 }
+
+verHistorial() {
+  this.router.navigate(['/players', this.player.id, 'history']);
+}
+
+
 }

@@ -112,4 +112,22 @@ export class SequelizePlayerRepository implements IPlayerRepository {
     player.physic = model.physic ?? 0;
     return player;
   }
+
+  async findHistory(name: string): Promise<any[]> {
+  const results = await this.playerModel.findAll({
+    where: { longName: { [Op.like]: `%${name}%` } },
+    attributes: ['fifaVersion', 'pace', 'shooting', 'passing', 'dribbling', 'defending', 'physic', 'overall'],
+    order: [['fifaVersion', 'ASC']],
+  });
+  return results.map(r => ({
+    year: r.fifaVersion,
+    pace: r.pace ?? 0,
+    shooting: r.shooting ?? 0,
+    passing: r.passing ?? 0,
+    dribbling: r.dribbling ?? 0,
+    defending: r.defending ?? 0,
+    physic: r.physic ?? 0,
+    overall: r.overall ?? 0,
+  }));
+}
 }

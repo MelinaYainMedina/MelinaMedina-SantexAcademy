@@ -1,0 +1,43 @@
+<div class="container">
+  <button class="btn-back" (click)="volver()">← Volver</button>
+
+  <div *ngIf="cargando" class="cargando">Cargando historial...</div>
+
+  <div *ngIf="!cargando && player" class="card">
+    <div class="header">
+      <div class="rating-badge">{{ player.rating }}</div>
+      <div>
+        <h1>📈 Evolución de {{ player.name }}</h1>
+        <p class="subtitle">{{ player.position }} · {{ player.club }}</p>
+      </div>
+    </div>
+
+    <div class="skill-selector">
+      <button
+        *ngFor="let skill of skills"
+        [class.active]="skillSeleccionada === skill.key"
+        (click)="cambiarSkill(skill.key)">
+        {{ skill.label }}
+      </button>
+    </div>
+
+    <div class="chart-container">
+      <h2>{{ skillLabel }} — FIFA 15 a FIFA 23</h2>
+      <canvas id="lineChart"></canvas>
+    </div>
+
+    <div class="ai-section">
+  <button class="btn-ai" (click)="analizarConIA()" [disabled]="cargandoAnalisis">
+    {{ cargandoAnalisis ? '🤖 Analizando...' : '🤖 Analizar con IA' }}
+    </button>
+    <div *ngIf="analisis" class="analisis-box">
+    <h3>💡 Análisis de IA</h3>
+    <p>{{ analisis }}</p>
+    </div>
+    </div>
+
+    <div *ngIf="history.length === 0" class="sin-datos">
+      No hay datos históricos para este jugador
+    </div>
+  </div>
+</div>

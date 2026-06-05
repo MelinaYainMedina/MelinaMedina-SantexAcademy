@@ -33,5 +33,10 @@ export class PlayersService {
 
   updatePlayer(id: number, data: Partial<Player>): Promise<Player | undefined> {
     return this.playerRepository.update(id, data);
+  
   }
+
+  getPlayerHistory(name: string): Promise<any[]> {
+  return this.playerRepository.findHistory(name);
+}
 }

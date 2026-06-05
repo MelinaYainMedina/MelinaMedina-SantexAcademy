@@ -56,4 +56,8 @@ export class InMemoryPlayerRepository implements IPlayerRepository {
     this.players[index] = { ...this.players[index], ...data };
     return this.players[index];
   }
+
+  async findHistory(name: string): Promise<any[]> {
+  return [];
+}
 }

@@ -29,4 +29,8 @@ export class TypeOrmPlayerRepository implements IPlayerRepository {
   async update(id: number, data: Partial<Player>): Promise<Player | undefined> {
     return undefined;
   }
+
+  async findHistory(name: string): Promise<any[]> {
+  return [];
+}
 }

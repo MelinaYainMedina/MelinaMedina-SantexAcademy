@@ -12,4 +12,6 @@ export interface IPlayerRepository {
   }): Promise<{ data: Player[]; total: number }>;
   create(data: Partial<Player>): Promise<Player>;
   update(id: number, data: Partial<Player>): Promise<Player | undefined>;
+
+  findHistory(name: string): Promise<any[]>;
 }
