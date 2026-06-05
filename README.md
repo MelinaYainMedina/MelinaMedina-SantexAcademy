@@ -55,3 +55,30 @@
 | PATCH | /api/players/:id | Editar jugador |
 | GET | /api/players/:id/history | Historial de skills por año |
 | GET | /api/players/:id/analysis | Análisis de evolución con IA |
+
+| POST | /api/players/import | Importar jugadores desde CSV |
+
+## Importar jugadores desde CSV (Punto extra)
+
+Permite subir un archivo CSV con jugadores y cargarlos a la base de datos.
+
+### Ejemplo de uso:
+```bash
+# 1. Obtener token
+curl -X POST http://localhost:3000/auth/login \
+  -H "Content-Type: application/json" \
+  -d '{"username":"melina","password":"melina123"}'
+
+# 2. Importar CSV
+curl -X POST http://localhost:3000/api/players/import \
+  -H "Authorization: Bearer TU_TOKEN" \
+  -F "file=@archivo.csv"
+```
+
+### Formato del CSV: long_name,club_name,player_positions,nationality_name,overall,pace,shooting,passing,dribbling,defending,physic
+Melina Test,FC Barcelona,ST,Argentina,85,80,75,70,82,45,70
+
+### Respuesta exitosa:
+```json
+{ "imported": 1, "errors": 0 }
+```
